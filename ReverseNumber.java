@@ -14,7 +14,7 @@ public class ReverseNumber {
            numString = numString.substring(1,numString.length());
        }
        int length = numString.length()-1;
-       int result = 0;
+       long result = 0;
        while(length>=0)
        {
            result += Integer.parseInt(String.valueOf(numString.charAt(length)))*Math.pow(10,length);
@@ -24,8 +24,8 @@ public class ReverseNumber {
        if(result<Math.pow(-2,31) || result>Math.pow(2,31) )
             return 0;
        if(number<0)
-           return result*-1;
+           return (int)result*-1;
        else
-           return result;
+           return (int)result;
     }
 }
