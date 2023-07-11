@@ -7,7 +7,8 @@ public class BinarySearch {
         System.out.println(binarySearchTarget(arr,target,start,end));
     }
     public static int binarySearchTarget(int[] arr, int target, int start, int end)
-    {   if(end==start && arr[start]!=target)
+    {
+        if(end==start && arr[start]!=target)
         {
             return-1;
         }

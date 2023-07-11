@@ -6,6 +6,11 @@ public class ListNode {
      this.val = val;
      this.next = next;
     }
+    ListNode(ListNode node)
+    {
+        this.val = node.val;
+        this.next = node.next;
+    }
     ListNode()
     {
 
