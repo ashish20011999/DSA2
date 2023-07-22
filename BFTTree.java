@@ -1,15 +1,23 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class BFTTree {
+    List<Integer> nodeTraversal1 = new ArrayList<>();
+    List<Integer> nodeTraversal2 = new ArrayList<>();
     public static void main(String[] args) {
         Tree node = new Tree(1,null,null);
         node.left = new Tree(2, null, null);
         node.right = new Tree(3, null, null);
-        node.left.left = new Tree(4, null, null);
+        node.left.left = null;
         node.left.right = new Tree(5, null, null);
-        node.left.right.right = new Tree(8, null, null);
-        node.right.left = new Tree(6, null, null);
+        node.left.right.left = new Tree(6, null, null);
+        node.left.right.right = null;
+        node.right.left = null;
         node.right.right = new Tree(7, null, null);
+        node.right.right.left = new Tree(8, null, null);
+        node.right.right.right = null;
         int height = treeHeight(node);
-        for (int i = 0; i < height; i++)
+        for (int i = 1; i <= height; i++)
         {
             BFT(node,i);
             System.out.println(" ");
@@ -31,13 +39,20 @@ public class BFTTree {
         {
             return;
         }
+        else if(node==null)
+        {
+            return;
+        }
         else if(height==1)
         {
             System.out.print(node.data+" ");
         }
+
         else{
-            BFT(node.left,height-1);
-            BFT(node.right,height-1);
+            if (node.left != null || node.right != null) {
+                BFT(node.left, height - 1);
+                BFT(node.right, height - 1);
+            }
         }
     }
 
