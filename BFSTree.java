@@ -1,7 +1,4 @@
-
-
 public class BFSTree {
-    public int height  =-1;
     public static void main(String[] args) {
         Tree node = new Tree(1,null,null);
         node.left = new Tree(2, null, null);
@@ -11,19 +8,10 @@ public class BFSTree {
         node.left.right.right = new Tree(8, null, null);
         node.right.left = new Tree(6, null, null);
         node.right.right = new Tree(7, null, null);
-
-        int data = 2;
-        new BFSTree().searchLevelOfElement(node,data);
-    }
-    public static void BFS(Tree node)
-    {
-        if(node == null)
-        {
-            return;
-        }
-        BFS(node.left);
-        BFS(node.right);
-        System.out.println(node.data);
+        int height = treeHeight(node);
+        System.out.println(height);
+        int data = 1;
+        BFS(node,data,1);
     }
     public static int treeHeight(Tree node)
     {
@@ -35,29 +23,18 @@ public class BFSTree {
         int heightRight = treeHeight(node.right)+1;
         return Math.max(heightLeft,heightRight);
     }
-    public int searchLevelOfElement(Tree root,int data)
+    public static void BFS(Tree node, int data, int searchHeight)
     {
-        // Base Case
-        if (root == null)
+        if(node==null)
         {
-            return -1;
+            return;
         }
-
-        // Store the maximum height of
-        // the left and right subtree
-        int leftHeight = searchLevelOfElement(root.left, data);
-
-        int rightHeight = searchLevelOfElement(root.right, data);
-
-        // Update height of the current node
-        int ans = Math.max(leftHeight, rightHeight) + 1;
-
-        // If current node is the required node
-        if (root.data == data) {
-            height = ans;
-            System.out.println(height);
+        else if(node.data==data)
+        {
+            System.out.println("found here at " + searchHeight + " level");
+            return;
         }
-
-        return ans;
+        BFS(node.left,data,searchHeight+1);
+        BFS(node.right,data,searchHeight+1);
     }
 }
