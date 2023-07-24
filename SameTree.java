@@ -1,7 +1,7 @@
 public class SameTree {
     public static void main(String[] args) {
-        Tree p = new Tree();
-        Tree q = new Tree();
+        Tree p = new Tree(); //define the tree, not defined here
+        Tree q = new Tree(); //define the tree here too
         System.out.println(isSameTree(p,q));
     }
     public static boolean isSameTree(Tree p, Tree q) {
